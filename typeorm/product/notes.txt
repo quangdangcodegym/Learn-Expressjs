@@ -1,0 +1,41 @@
+### các câu lệnh install dự án Node Express với typescripts
+
+Đây là các câu lệnh npm để khởi tạo một dự án Node.js với TypeScript và cài đặt các gói phần mềm cần thiết.
+npm init: Lệnh này được sử dụng để khởi tạo một dự án mới và tạo một file package.json. 
+File này chứa thông tin về dự án, các gói phần mềm được cài đặt và các scripts để thực hiện các tác vụ trong dự án.
+npm i -D typescript tsc tsc-watch rimraf @types/express: 
+Câu lệnh này cài đặt các gói phần mềm cần thiết để sử dụng TypeScript và Express framework trong dự án. Cụ thể:
+typescript: là một ngôn ngữ lập trình được phát triển bởi Microsoft, 
+cho phép viết code JavaScript với các tính năng của một ngôn ngữ lập trình tĩnh như kiểu dữ liệu, generics, interface, ...
+tsc: là TypeScript Compiler, được sử dụng để biên dịch TypeScript code thành JavaScript.
+tsc-watch: là một package giúp tự động biên dịch TypeScript code khi có sự thay đổi.
+rimraf: là một package giúp xóa các file hoặc thư mục một cách an toàn trên mọi nền tảng.
+@types/express: là các type definitions cho Express framework, giúp cho TypeScript biết được 
+các method và properties của Express khi import vào code.
+npm i express body-parser multer ejs: Câu lệnh này cài đặt các gói phần mềm cần thiết để 
+sử dụng Express và các tính năng của nó trong dự án:
+express: là một framework web được sử dụng để xây dựng các ứng dụng web và API.
+body-parser: là một middleware của Express để xử lý dữ liệu được gửi từ client lên server.
+multer: là một middleware của Express để xử lý các file được gửi từ client lên server.
+ejs: là một template engine được sử dụng để render HTML từ server trả về cho client.
+npm i typeorm mysql reflect-metadata --save: Câu lệnh này cài đặt các gói phần mềm để sử dụng 
+TypeORM để tương tác với cơ sở dữ liệu MySQL trong dự án:
+typeorm: là một ORM (Object-Relational Mapping) framework để tương tác với cơ sở dữ liệu.
+mysql: là một driver cho TypeORM để tương tác với cơ sở dữ liệu MySQL.
+reflect-metadata: là một package giúp cho TypeScript biết được các metadata của 
+class, method, property khi được import vào code.
+
+### Khi post lên /products/delete (#không có /delete) thì phải có tham số upload.single('image')
+ko có sẽ không nhận được req.body.properties
+app.post("/products/delete", upload.single('image'), async (req: any, res: any) => {
+
+
+###
+Khi gửi một request từ client lên server, có ba cách thông dụng để truyền dữ liệu: form-data, x-www-form-urlencoded, và raw. Các cách này khác nhau về cách định dạng và truyền dữ liệu. Dưới đây là cách thức của từng loại:
+form-data: Cách này thường được sử dụng để truyền dữ liệu liên quan đến file (như hình ảnh, tài liệu,...) hoặc dữ liệu không có định dạng chuỗi. Để gửi dữ liệu bằng cách này, bạn cần sử dụng phương thức POST và sử dụng thư viện HTTP để xử lý request. Dữ liệu sẽ được đóng gói và truyền dưới dạng một multipart/form-data.
+
+x-www-form-urlencoded: Cách này được sử dụng để truyền dữ liệu dưới dạng các cặp key-value (chỉ chấp nhận dữ liệu có định dạng chuỗi). Dữ liệu sẽ được định dạng thành một chuỗi query string và truyền dưới dạng một application/x-www-form-urlencoded. Phương thức POST thường được sử dụng để gửi dữ liệu bằng cách này.
+
+raw: Cách này cho phép truyền dữ liệu dưới nhiều định dạng khác nhau, như JSON, XML hoặc plain text. Dữ liệu sẽ được truyền dưới dạng một raw body, thường được truyền qua các phương thức POST hoặc PUT.
+
+Mỗi cách truyền dữ liệu có ưu điểm và hạn chế riêng, tùy thuộc vào tình huống sử dụng và đặc điểm của dữ liệu được truyền. Khi thiết kế một API, bạn cần cân nhắc lựa chọn phương thức truyền dữ liệu phù hợp nhất cho từng endpoint để đảm bảo hiệu suất và tính bảo mật.
